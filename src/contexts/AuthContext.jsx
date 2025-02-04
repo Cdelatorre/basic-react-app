@@ -22,6 +22,7 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const login = (token) => {
+    // token = klahsdklahslfbaosd.12903u190239012u309234,2189472984912849012
     const navigateToProfile = () => {
       navigate('/profile');
     }

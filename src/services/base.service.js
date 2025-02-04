@@ -1,12 +1,12 @@
 import axios from "axios";
 import { getAccessToken, logout } from "../store/AccessTokenStore";
 
-export const createHttp = (useAccesstToken = false) => {
+export const createHttp = (useAccessToken = false) => {
   const http = axios.create({
     baseURL: "http://localhost:3000",
   });
 
-  if (useAccesstToken) {
+  if (useAccessToken) {
     http.interceptors.request.use(
       (config) => {
         config.headers.Authorization = `Bearer ${getAccessToken()}`;

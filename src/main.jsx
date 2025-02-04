@@ -7,13 +7,16 @@ import ThemeProvider from './contexts/ThemeContext.jsx'
 import AuthContextProvider from './contexts/AuthContext.jsx'
 
 import './index.css'
+import { NotificationProvider } from './contexts/NotificationContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <ThemeProvider>
         <AuthContextProvider>
-          <App />
+          <NotificationProvider>
+            <App />
+          </NotificationProvider>
         </AuthContextProvider>
       </ThemeProvider>
     </BrowserRouter>

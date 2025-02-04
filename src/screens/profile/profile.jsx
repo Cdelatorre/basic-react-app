@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
+import { useNotification } from '../../contexts/NotificationContext';
 
 const Profile = () => {
-
+  const { notify } = useNotification();
   const { currentUser } = useContext(AuthContext);
 
-  console.log(currentUser);
   return (
     <div className="container mt-5">
       <div className="card bg-app-primary text-white">
@@ -20,6 +20,7 @@ const Profile = () => {
       </div>
 
       <div className="mt-4 text-center">
+        <button onClick={() => notify("This is a success message", "error")} className="btn btn-success mx-2">Success</button>
         <Link to="/gallery" className="btn btn-primary mx-2">Photo Gallery</Link>
         <Link to="/likes" className="btn btn-secondary mx-2">Likes</Link>
         <Link to="/" className="btn btn-danger mx-2">Home</Link>

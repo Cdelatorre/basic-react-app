@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer'
 import ProtectedRoute from './components/ProtectedRoute'
 import PostCreate from './screens/posts-create/PostCreate'
 import Feed from './screens/feed/feed'
+import Likes from './screens/likes/likes'
 
 function App() {
 
@@ -52,6 +53,14 @@ function App() {
                 <Feed />
               </ProtectedRoute>}
           />
+          <Route
+            path="/likes"
+            element={
+              <ProtectedRoute>
+                <Likes />
+              </ProtectedRoute>}
+          />
+
 
           <Route
             path="/posts/create"

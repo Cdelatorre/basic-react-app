@@ -1,9 +1,12 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
+import { logout } from '../../store/AccessTokenStore';
+import { useNotification } from '../../contexts/NotificationContext';
 
 const Navbar = () => {
   const { currentUser, isAuthLoaded } = useContext(AuthContext);
+  const { notify } = useNotification();
 
   const showAuthLinks = currentUser && isAuthLoaded
 
@@ -21,6 +24,11 @@ const Navbar = () => {
                 <NavLink to="/" className="nav-link">Home</NavLink>
                 <NavLink to="/feed" className="nav-link">Feed</NavLink>
                 <NavLink to="/posts/create" className="nav-link">Add post</NavLink>
+                <NavLink to="/profile" className="nav-link">Profile</NavLink>
+                <button className="btn btn-danger" onClick={() => {
+                  logout()
+
+                }}>Logout</button>
               </>
             ) :
               (
