@@ -26,12 +26,12 @@ const Post = ({ imageUrl, caption, user, postId, isLiked, likesCount }) => {
         // handle errors
       });
   };
-
+  console.log(user)
   return (
     <div className="card mb-3">
       <img src={imageUrl} className="card-img-top" alt="Post" />
       <div className="card-body">
-        <Link to={`/users/${user._id}`}>@{user.name}</Link>
+        <Link to={`/users/${user.id}`}>@{user.name}</Link>
         <h5 className="card-title">{caption}</h5>
         <button className="btn btn-light" onClick={submitLike}>
           <i className={`bi ${liked ? 'bi-heart-fill' : 'bi-heart'}`}></i><small className="ms-1">{likesAmount}</small>

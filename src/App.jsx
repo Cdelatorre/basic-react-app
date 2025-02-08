@@ -12,6 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import PostCreate from './screens/posts-create/PostCreate'
 import Feed from './screens/feed/feed'
 import Likes from './screens/likes/likes'
+import Chat from './screens/chat/chat'
 
 function App() {
 
@@ -70,6 +71,16 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          <Route
+            path="/chats/:chatId"
+            element={
+              <ProtectedRoute>
+                <Chat />
+              </ProtectedRoute>
+            }
+          />
+
 
           <Route
             path="/profile"

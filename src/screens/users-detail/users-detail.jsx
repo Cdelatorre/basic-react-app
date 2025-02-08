@@ -1,10 +1,24 @@
 import { useEffect, useState } from "react";
 import { getUser } from "../../services/user.service";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { createChatService } from "../../services/chat.service";
 
 const UsersDetail = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
   const { id } = useParams();
+
+  const createChat = () => {
+    console.log("Creating chat...");
+    createChatService(id)
+      .then((response) => {
+        console.log(response)
+        navigate(`/chats/${response.id}`);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
     getUser(id)
@@ -14,7 +28,7 @@ const UsersDetail = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, [id]);
+  }, []);
 
   return (
     <div className="container mt-5">
@@ -39,8 +53,11 @@ const UsersDetail = () => {
             ))}
           </div>
         </div>
-      )
-      }
+      )}
+
+      <div className="text-center mt-4">
+        <button onClick={createChat} className="btn btn-primary">Init Chat</button>
+      </div>
 
     </div >
   );
